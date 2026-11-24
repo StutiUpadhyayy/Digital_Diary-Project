@@ -1,0 +1,3 @@
+2026-11-20 | Today I started learning Python.
+2026-11-21 | I practised strings and functions.
+2026-11-22 | I completed the first version of my digital diary.
