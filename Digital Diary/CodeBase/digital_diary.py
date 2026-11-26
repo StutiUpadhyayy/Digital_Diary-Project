@@ -4,7 +4,7 @@ FILE_NAME = "diary.txt"
 
 
 def load_notes():
-    """Load notes from the text file and return them as a list of dictionaries."""
+    
     notes = []
 
     try:
@@ -20,7 +20,7 @@ def load_notes():
                     date, text = parts
                     notes.append({"date": date, "text": text})
     except FileNotFoundError:
-        # The diary file is created automatically when the first note is saved.
+       
         pass
     except OSError as error:
         print(f"Error reading diary file: {error}")
@@ -29,7 +29,7 @@ def load_notes():
 
 
 def save_notes(notes):
-    """Save the complete notes list to the text file."""
+   
     try:
         with open(FILE_NAME, "w", encoding="utf-8") as file:
             for note in notes:
@@ -41,7 +41,7 @@ def save_notes(notes):
 
 
 def is_valid_date(date_text):
-    """Check that a date exactly follows YYYY-MM-DD and is a real calendar date."""
+    
     try:
         parsed_date = datetime.strptime(date_text, "%Y-%m-%d")
         return parsed_date.strftime("%Y-%m-%d") == date_text
@@ -50,7 +50,7 @@ def is_valid_date(date_text):
 
 
 def add_note():
-    """Get date and text from the user, validate them, and save the note."""
+   
     date_text = input("Enter date (YYYY-MM-DD): ").strip()
 
     if not is_valid_date(date_text):
@@ -71,7 +71,7 @@ def add_note():
 
 
 def view_all_notes():
-    """Display all notes with note numbers starting from 1."""
+    
     notes = load_notes()
 
     if not notes:
@@ -84,7 +84,7 @@ def view_all_notes():
 
 
 def search_notes():
-    """Search note text by keyword without case sensitivity."""
+    
     keyword = input("Enter keyword to search: ").strip()
 
     if not keyword:
@@ -95,7 +95,7 @@ def search_notes():
     matches = []
 
     for number, note in enumerate(notes, start=1):
-        # lower() makes the search case-insensitive; find() checks for a match.
+        
         if note["text"].lower().find(keyword.lower()) != -1:
             matches.append((number, note))
 
@@ -109,7 +109,7 @@ def search_notes():
 
 
 def delete_note():
-    """Delete a note using its displayed number."""
+ 
     notes = load_notes()
 
     if not notes:
@@ -133,7 +133,7 @@ def delete_note():
 
 
 def show_menu():
-    """Display the main menu."""
+    
     print("\n========== DIGITAL DIARY ==========")
     print("1. Add note")
     print("2. View all notes")
@@ -144,7 +144,7 @@ def show_menu():
 
 
 def main():
-    """Run the application until the user chooses Exit."""
+   
     while True:
         show_menu()
         choice = input("Enter your choice (1-5): ").strip()
